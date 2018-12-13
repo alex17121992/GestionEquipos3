@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_camera"
+            android:icon="@mipmap/personal_trainer_25px"
+            android:title="DAR DE ALTA EQUIPO" />
+        <item
+            android:id="@+id/nav_lista_equipo"
+            android:icon="@mipmap/team_25px"
+            android:title="EQUIPOS" />
+        <item
+            android:id="@+id/nav_gallery"
+            android:icon="@mipmap/soccer_muneco_25px"
+            android:title="JUGADORES" />
+        <item
+            android:id="@+id/nav_slideshow"
+            android:icon="@mipmap/porteria_25px"
+            android:title="PARTIDOS" />
+        <item
+            android:id="@+id/nav_manage"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="ESTADISTICAS" />
+    </group>
+
+</menu>

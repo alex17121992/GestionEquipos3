@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#005f85</color>
+    <color name="colorPrimaryDark">#005f85</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="colorItem">#ffffff</color>
+    <color name="deleteItem">#ff0000</color>
+
+    <color name="principal">#58a1ef</color>
+    <color name="grisBlanco">#e4e3e3</color>
+    <color name="black_overlay">#66000000</color>
+    <color name="gris">#aaaaaa</color>
+    <color name="blanco">#faf9f9</color>
+</resources>

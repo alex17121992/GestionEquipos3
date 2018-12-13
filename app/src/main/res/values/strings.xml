@@ -1,0 +1,46 @@
+<resources>
+    <string name="app_name">GestionEquipos2</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_lista_jugadores">ListaJugadores</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
+    <string name="tab_text_3">Tab 3</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+
+    <string name="Titulo_jugador">Jugador</string>
+    <string name="etNombre">Nombre</string>
+    <string name="tvApellidos">Apellidos</string>
+    <string name="tvN_Deportivo">N.Deportivo</string>
+    <string name="tvEdad">Edad</string>
+    <string name="tvAltura">Altura</string>
+    <string name="tvPeso">Peso</string>
+    <string name="tvDHabitual">Dem.Habitual</string>
+    <string name="tvPieDominante">Pie Dominante</string>
+    <string name="tvLesiones">Lesiones</string>
+    <string name="tvEAnteriores">E. Anteriores</string>
+    <string name="tvDSecundaria">Dem.Secund.</string>
+    <string name="hitnEquipo">Equipo</string>
+    <string name="tvEquipoS">Equipo</string>
+    <string name="tvTipoJugador">Tipo de Jugador:</string>
+
+    // String para hint
+    <string name="hintDSecundariaS">D. Secundaria</string>
+    <string name="hintDHabitualS">D. Habitual</string>
+    <string name="hintPDominante">Pie Dominante</string>
+    <string name="tvPDominante">Pie Dominante</string>
+    <string name="hintPeso">Peso</string>
+    <string name="hintAltura">Altura</string>
+    <string name="hintEdad">Edad</string>
+    <string name="hintApellidos">Apellidos</string>
+    <string name="hintNombre">Nombre</string>
+    <string name="hintNDeportivo">NDeportivo</string>
+
+</resources>

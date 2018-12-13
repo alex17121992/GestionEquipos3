@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:id="@+id/view_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/deleteItem">
+
+        <ImageView
+            android:id="@+id/delete_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="60dp"
+            android:layout_marginRight="58dp"
+            android:src="@drawable/ic_menu_camera" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="61dp"
+            android:layout_marginRight="-401dp"
+            android:layout_toLeftOf="@id/delete_icon"
+            android:text="Borrar"
+            android:textColor="#fff"
+            android:textSize="13dp" />
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorItem"
+        android:id="@+id/content_item2">
+
+        <ImageView
+            android:id="@+id/imgFotoEquip"
+            android:layout_width="150dp"
+            android:layout_height="108dp"
+            app:srcCompat="@mipmap/vector_illustration_with_the_image_of_a_soccer_team_eps_vector_csp14995182" />
+
+        <TextView
+            android:id="@+id/txtNombreEquip"
+            android:layout_width="200dp"
+            android:layout_height="42dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="175dp"
+            android:layout_marginTop="31dp"
+            android:hint="Nombre del equipo"
+            android:textAlignment="center"
+            android:textSize="18dp" />
+    </RelativeLayout>
+
+</FrameLayout>
