@@ -41,7 +41,6 @@ public class  BdJugador extends SQLiteOpenHelper {
         db.execSQL("CREATE TABLE IF NOT EXISTS EQUIPO(\n" +
                 "   ID INTEGER CONSTRAINT PK_EQUIPO_ID PRIMARY KEY AUTOINCREMENT,\n" +
                 "   NOMBRE VARCHAR(100) NOT NULL," +
-                "   FOTO BLOB," +
                 "   NUMJUGADORES NUMERIC(2) DEFAULT 0);");
         db.execSQL("CREATE TABLE IF NOT EXISTS JUGADOR(\n" +
                 "   ID INTEGER CONSTRAINT PK_JUGADOR_ID PRIMARY KEY AUTOINCREMENT,\n" +
@@ -108,6 +107,8 @@ public class  BdJugador extends SQLiteOpenHelper {
                 " BEGIN " +
                 "     UPDATE EQUIPO SET NUMJUGADORES=NUMJUGADORES-1 WHERE ID=OLD.IDEQUIP;" +
                 " END;");
+        if(!existeScouting())
+        db.execSQL("INSERT INTO EQUIPO(NOMBRE) VALUES('SCOUTING')");
     }
 
     /**
@@ -234,7 +235,11 @@ public class  BdJugador extends SQLiteOpenHelper {
     }
 
 
-
+    /**
+     * Metodo para listar jugador de Scouting,es igual que listar un jugador normal con la diferencia que usa la clausula like para filtrar por
+     * Scouting
+     * @return devuelve un ArrayList de tipo jugador
+     */
     public List<Jugador> listadoJugadorS() {
         /*  Abrimos  la  BD  de  Lectura  */
         SQLiteDatabase db = getReadableDatabase();
@@ -354,5 +359,21 @@ public class  BdJugador extends SQLiteOpenHelper {
         return jug;
     }
 
+    /**
+     * Metodo para saber si el equipo Scouting ha sido creado ya,para evitar crearlo mas de una vez
+     * @return devuelte true si existe,false si no existe
+     */
+    public boolean existeScouting(){
+        /*  Abrimos  la  BD  de  Lectura  */
+        SQLiteDatabase db = getReadableDatabase();
+        /*  Creamos  una  Lista  de  Contactos  que  será  la  que  devolvamos  en  este   metodo  */
+        if (db != null) {
+            String[] campos = {"nombre"};
+            Cursor c = db.query("EQUIPO", campos, "NOMBRE LIKE '%SCOUTING%'", null, null, null, null, null);
+            if (!c.moveToFirst())
+                return false;
+        }
+        return true;
+    }
 }
 

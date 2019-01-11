@@ -21,7 +21,7 @@ import com.example.alex_.gestionequipos2.R;
 import com.example.alex_.gestionequipos2.Controladores.ViewPageAdapter;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,ListaJugadores.OnFragmentInteractionListener,
-    listaScouting.OnFragmentInteractionListener,listaJugador.OnFragmentInteractionListener,Equipos.OnFragmentInteractionListener,ListaEquipos.OnFragmentInteractionListener {
+    listaScouting.OnFragmentInteractionListener,listaJugador.OnFragmentInteractionListener,Equipos.OnFragmentInteractionListener {
     private BdJugador bd;
     private TabLayout tabLayout;
     private ViewPager viewPager;
