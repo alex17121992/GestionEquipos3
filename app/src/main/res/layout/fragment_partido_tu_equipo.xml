@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Vistas.PartidoTuEquipo">
+
+        <TableLayout
+            android:id="@+id/tablaPartido"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="vertical">
+
+            <TableRow>
+                <TextView
+                    android:id="@+id/tvGolesPartidoCabecera"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingLeft="@dimen/standard_10"
+                    android:paddingBottom="@dimen/standard_10"
+                    android:paddingTop="@dimen/standard_10"
+                    android:textSize="@dimen/standard_21"
+                    android:textAlignment="center"
+                    android:text="GOLES"
+                    android:background="@color/gris" />
+            </TableRow>
+
+            <TableRow>
+                <TextView
+                    android:id="@+id/tvGolesPartido"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Goles"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:textSize="@dimen/standard_21"
+                    android:textColor="@color/blanco"
+                    android:background="@color/colorPrimary"/>
+
+                <TextView
+                    android:id="@+id/tvMinutGolPartido"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Minuto"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:textSize="@dimen/standard_21"
+                    android:textColor="@color/blanco"
+                    android:background="@color/colorPrimary"/>
+
+                <TextView
+                    android:id="@+id/tvJugadorGolPartido"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Jugador"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:textSize="@dimen/standard_21"
+                    android:textColor="@color/blanco"
+                    android:background="@color/colorPrimary"/>
+            </TableRow>
+
+            <TableRow>
+                <EditText
+                    android:id="@+id/etGolPatido"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="Goles"
+                    android:layout_weight="1"
+                    android:layout_marginTop="@dimen/standard_10"
+                    android:drawableLeft="@mipmap/soccer_goal_25px"
+                    android:gravity="center"/>
+
+                <EditText
+                    android:id="@+id/etMinutoGolPartido"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="Minuto"
+                    android:layout_weight="1"
+                    android:layout_marginTop="@dimen/standard_10"
+                    android:gravity="center"/>
+
+                <Spinner
+                    android:id="@+id/spiJugadorGolPartido"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="Jugador"
+                    android:layout_weight="1"
+                    android:layout_marginTop="@dimen/standard_10"
+                    android:gravity="center"
+                    android:textAlignment="center"/>
+            </TableRow>
+
+            <TableRow>
+                <TextView
+                    android:id="@+id/tvCambiosCabecera"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingLeft="@dimen/standard_10"
+                    android:paddingTop="@dimen/standard_10"
+                    android:paddingBottom="@dimen/standard_10"
+                    android:textSize="@dimen/standard_21"
+                    android:text="CAMBIOS"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorPrimary"
+                    android:background="@color/gris"/>
+            </TableRow>
+
+            <TableRow>
+                <TextView
+                    android:id="@+id/tvCambioPartido"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Cambio"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:textSize="@dimen/standard_21"
+                    android:textColor="@color/blanco"
+                    android:background="@color/colorPrimary"/>
+
+                <TextView
+                    android:id="@+id/tvMinutCambioPartido"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Minuto"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:textSize="@dimen/standard_21"
+                    android:textColor="@color/blanco"
+                    android:background="@color/colorPrimary"/>
+
+                <TextView
+                    android:id="@+id/tvJugadorCambioPartido"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Jugador"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:textSize="@dimen/standard_21"
+                    android:textColor="@color/blanco"
+                    android:background="@color/colorPrimary"/>
+            </TableRow>
+
+            <TableRow>
+                <EditText
+                    android:id="@+id/etCambiopartido"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="Cambio"
+                    android:layout_weight="1"
+                    android:layout_marginTop="@dimen/standard_10"
+                    android:drawableLeft="@mipmap/player_change_25px"
+                    android:gravity="center" />
+
+                <EditText
+                    android:id="@+id/etMinutoCambioPartido"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="Minuto"
+                    android:layout_marginTop="@dimen/standard_10"
+                    android:layout_weight="1"
+                    android:gravity="center" />
+
+                <Spinner
+                    android:id="@+id/spiJugadorCambioPartido"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/standard_10"
+                    android:hint="Jugador"
+                    android:textAlignment="center"
+                    android:layout_weight="1"
+                    android:gravity="center" />
+            </TableRow>
+
+
+            <TableRow>
+                <TextView
+                    android:id="@+id/tvTarjetasACabecera"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingLeft="@dimen/standard_10"
+                    android:paddingTop="@dimen/standard_10"
+                    android:paddingBottom="@dimen/standard_10"
+                    android:text="T. AMARILLA"
+                    android:layout_marginBottom="@dimen/standard_10"
+                    android:textAlignment="center"
+                    android:textSize="@dimen/standard_21"
+                    android:textColor="@color/amarillo"
+                    android:background="@color/gris"/>
+            </TableRow>
+
+            <TableRow>
+                <TextView
+                    android:id="@+id/tvTarjetasAPartido"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tarjetas"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:textSize="@dimen/standard_21"
+                    android:textColor="@color/blanco"
+                    android:background="@color/colorPrimary"/>
+
+                <TextView
+                    android:id="@+id/tvMinutoTarjetaAPartido"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Minuto "
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:textSize="@dimen/standard_21"
+                    android:textColor="@color/blanco"
+                    android:background="@color/colorPrimary"/>
+
+                <TextView
+                    android:id="@+id/tvJugadorTarjetaAPartido"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Jugador"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:textSize="@dimen/standard_21"
+                    android:textColor="@color/blanco"
+                    android:background="@color/colorPrimary"/>
+            </TableRow>
+
+            <TableRow>
+                <EditText
+                    android:id="@+id/etTarjetaAPartido"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="Tarjetas"
+                    android:layout_weight="1"
+                    android:layout_marginTop="@dimen/standard_10"
+                    android:drawableLeft="@mipmap/soccer_yellow_card_25px"
+                    android:gravity="center" />
+
+                <EditText
+                    android:id="@+id/etMinutoTarjetaAPartido"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="Minuto"
+                    android:layout_marginTop="@dimen/standard_10"
+                    android:layout_weight="1"
+                    android:gravity="center" />
+
+                <Spinner
+                    android:id="@+id/spiJugadorTarjetaAPartido"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="Jugador"
+                    android:textAlignment="center"
+                    android:layout_marginTop="@dimen/standard_10"
+                    android:layout_weight="1"
+                    android:gravity="center" />
+            </TableRow>
+
+            <TableRow>
+                <TextView
+                    android:id="@+id/tvTarjetasRCabecera"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/standard_10"
+                    android:layout_weight="1"
+                    android:paddingLeft="@dimen/standard_10"
+                    android:paddingTop="@dimen/standard_10"
+                    android:paddingBottom="@dimen/standard_10"
+                    android:text="T. ROJA"
+                    android:textSize="@dimen/standard_21"
+                    android:textAlignment="center"
+                    android:textColor="@color/rojo"
+                    android:background="@color/gris"/>
+            </TableRow>
+
+            <TableRow>
+                <TextView
+                    android:id="@+id/tvTarjetasRPartido"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tarjeta"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:textSize="@dimen/standard_21"
+                    android:textColor="@color/blanco"
+                    android:background="@color/colorPrimary"/>
+
+                <TextView
+                    android:id="@+id/tvMinutoTarjetaRPartido"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Minuto "
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:textSize="@dimen/standard_21"
+                    android:textColor="@color/blanco"
+                    android:background="@color/colorPrimary"/>
+
+                <TextView
+                    android:id="@+id/tvJugadorTarjetaRPartido"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Jugador"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:textSize="@dimen/standard_21"
+                    android:textColor="@color/blanco"
+                    android:background="@color/colorPrimary"/>
+            </TableRow>
+
+            <TableRow>
+                <EditText
+                    android:id="@+id/etTarjetaRPartido"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="Tarjeta"
+                    android:layout_weight="1"
+                    android:layout_marginTop="@dimen/standard_10"
+                    android:drawableLeft="@mipmap/soccer_red_card_25px"
+                    android:gravity="center" />
+
+                <EditText
+                    android:id="@+id/etMinutoTarjetaRPartido"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="Minuto"
+                    android:layout_marginTop="@dimen/standard_10"
+                    android:layout_weight="1"
+                    android:gravity="center" />
+
+                <Spinner
+                    android:id="@+id/spiJugadorTarjetaRPartido"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="Jugador"
+                    android:layout_marginTop="@dimen/standard_10"
+                    android:textAlignment="center"
+                    android:layout_weight="1"
+                    android:gravity="center" />
+            </TableRow>
+
+        </TableLayout>
+
+</FrameLayout>

@@ -5,6 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.design.widget.NavigationView;
@@ -21,7 +22,9 @@ import com.example.alex_.gestionequipos2.R;
 import com.example.alex_.gestionequipos2.Controladores.ViewPageAdapter;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,ListaJugadores.OnFragmentInteractionListener,
-    listaScouting.OnFragmentInteractionListener,listaJugador.OnFragmentInteractionListener,Equipos.OnFragmentInteractionListener {
+    listaScouting.OnFragmentInteractionListener,AnadirPartido.OnFragmentInteractionListener, PartidoTuEquipo.OnFragmentInteractionListener,
+        menuPartido.OnFragmentInteractionListener, PartidoRival.OnFragmentInteractionListener, convocatoria.OnFragmentInteractionListener {
+
     private BdJugador bd;
     private TabLayout tabLayout;
     private ViewPager viewPager;
@@ -99,9 +102,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             getSupportFragmentManager().beginTransaction().replace(R.id.content,li).commit();
         } else if (id == R.id.nav_manage) {
 
+        }else if (id == R.id.partidos){
+            Fragment fragmentAnadirPartido = new AnadirPartido();
+            getSupportFragmentManager().beginTransaction().replace(R.id.content,fragmentAnadirPartido).commit();
         }
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+
+
+    DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }

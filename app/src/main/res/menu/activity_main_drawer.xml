@@ -17,7 +17,7 @@
             android:icon="@mipmap/soccer_muneco_25px"
             android:title="JUGADORES" />
         <item
-            android:id="@+id/nav_slideshow"
+            android:id="@+id/partidos"
             android:icon="@mipmap/porteria_25px"
             android:title="PARTIDOS" />
         <item

@@ -3,6 +3,7 @@ package com.example.alex_.gestionequipos2.Controladores;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
@@ -18,6 +19,7 @@ public class  BdJugador extends SQLiteOpenHelper {
 
     private Equipo equip;
     private Jugador jug;
+    private boolean primeraVez;
 
     /**
      * Constructor de la clase
@@ -29,6 +31,7 @@ public class  BdJugador extends SQLiteOpenHelper {
 
     public BdJugador(Context context, String nombre, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, nombre, factory, version);
+        primeraVez=true;
     }
 
     /**
@@ -40,8 +43,9 @@ public class  BdJugador extends SQLiteOpenHelper {
         //aquí creamos las tablas
         db.execSQL("CREATE TABLE IF NOT EXISTS EQUIPO(\n" +
                 "   ID INTEGER CONSTRAINT PK_EQUIPO_ID PRIMARY KEY AUTOINCREMENT,\n" +
-                "   NOMBRE VARCHAR(100) NOT NULL," +
+                "   NOMBRE VARCHAR(100) NOT NULL UNIQUE," +
                 "   NUMJUGADORES NUMERIC(2) DEFAULT 0);");
+
         db.execSQL("CREATE TABLE IF NOT EXISTS JUGADOR(\n" +
                 "   ID INTEGER CONSTRAINT PK_JUGADOR_ID PRIMARY KEY AUTOINCREMENT,\n" +
                 "   NOMBRE VARCHAR(50) NOT NULL,\n" +
@@ -55,14 +59,16 @@ public class  BdJugador extends SQLiteOpenHelper {
                 "   PIE VARCHAR(50),\n" +
                 "   LESIONES VARCHAR(1),\n" +
                 "   EQUIPOSPRO VARCHAR(100),\n" +
-                "   FOTO BLOB," +
+                "   FOTO VARCHAR2(500)," +
                 "   TIPO VARCHAR(1) NOT NULL," +
                 "   IDEQUIP INTEGER CONSTRAINT FK_JUG_EQUIP REFERENCES EQUIPO(ID))" +
                 " ;");
+
         db.execSQL("CREATE TABLE IF NOT EXISTS ENTRENAMIENTO(" +
                 "IDENT INTEGER CONSTRAINT PK_ENTR_ID PRIMARY KEY AUTOINCREMENT," +
                 "ENTR BLOB" +
                 ");");
+
         db.execSQL("CREATE TABLE IF NOT EXISTS PARTIDOS(" +
                 "FECHA VARCHAR(100) CONSTRAINT PK_PARTIDO_FECH PRIMARY KEY," +
                 "TARJETASAM NUMERIC(2) DEFAULT 0,\n" +
@@ -74,6 +80,7 @@ public class  BdJugador extends SQLiteOpenHelper {
                 "RESULTLOC NUMERIC(2) DEFAULT 0," +
                 "RESULTVISIT NUMERIC(2) DEFAULT 0," +
                 "CERRADO VARCHAR(1) DEFAULT 'N');");
+
         db.execSQL("CREATE TABLE IF NOT EXISTS PART_JUG(" +
                 "FECHA VARCHAR(100)," +
                 "IDJUG INTEGER," +
@@ -89,6 +96,7 @@ public class  BdJugador extends SQLiteOpenHelper {
                 "PRIMARY KEY(FECHA,IDJUG)," +
                 "FOREIGN KEY(FECHA) REFERENCES PARTIDO(FECHA)," +
                 "FOREIGN KEY(IDJUG) REFERENCES JUGADOR(ID));");
+
         db.execSQL("CREATE TABLE IF NOT EXISTS EQUIP_PART(" +
                 "FECHA VARCHAR(100)," +
                 "ID INTEGER," +
@@ -107,15 +115,19 @@ public class  BdJugador extends SQLiteOpenHelper {
                 " BEGIN " +
                 "     UPDATE EQUIPO SET NUMJUGADORES=NUMJUGADORES-1 WHERE ID=OLD.IDEQUIP;" +
                 " END;");
-        if(!existeScouting())
-        db.execSQL("INSERT INTO EQUIPO(NOMBRE) VALUES('SCOUTING')");
+
+        try {
+             db.execSQL("INSERT INTO EQUIPO(NOMBRE) VALUES('SCOUTING')");
+        }catch(SQLException e){
+             e.printStackTrace();
+        }
     }
 
     /**
      * Este metodo sirver para actualizar la Bd y reconstruirla con los cambios nuevos
      * @param db Este objeto es para poder ejecutar la instruccion de execSQL que te permite ejecutar consultas en RAW normalmente para DDL
      * @param oldVersion version anterior de la DB
-     * @param newVersion version nueva de ka DB
+     * @param newVersion version nueva de la DB
      */
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
@@ -178,6 +190,7 @@ public class  BdJugador extends SQLiteOpenHelper {
             valores.put("tipo", j.getTipo());
             valores.put("idequip", j.getIdEquip());
             nreg_afectados = db.insert("JUGADOR", null, valores);
+
         }
         db.close();
         return nreg_afectados;
@@ -219,12 +232,12 @@ public class  BdJugador extends SQLiteOpenHelper {
         /*  Creamos  una  Lista  de  Contactos  que  será  la  que  devolvamos  en  este   metodo  */
         List<Jugador> lista_jug = new ArrayList<Jugador>();
         if (db != null) {
-            String[] campos = {"ID", "NOMBRE","NOMBREDEPORT"};
+            String[] campos = {"ID", "NOMBRE","NOMBREDEPORT","FOTO"};
             /*  Como  queremos  devolver  todos  los  registros  el  tercer   parámetro  del  query  (  String  selection  )  es  null  */
             Cursor c = db.query("JUGADOR", campos, "TIPO LIKE 'J'", null, null, null, null, null);
             if (c.moveToFirst()) {
                 do {
-                    jug = new Jugador(c.getInt(0), c.getString(1),c.getString(2));
+                    jug = new Jugador(c.getInt(0), c.getString(1),c.getString(2),c.getString(3));
                     lista_jug.add(jug);
                 } while (c.moveToNext());
             }
@@ -246,12 +259,12 @@ public class  BdJugador extends SQLiteOpenHelper {
         /*  Creamos  una  Lista  de  Contactos  que  será  la  que  devolvamos  en  este   metodo  */
         List<Jugador> lista_jug = new ArrayList<Jugador>();
         if (db != null) {
-            String[] campos = {"ID", "NOMBRE","NOMBREDEPORT"};
+            String[] campos = {"ID", "NOMBRE","NOMBREDEPORT","FOTO"};
             /*  Como  queremos  devolver  todos  los  registros  el  tercer   parámetro  del  query  (  String  selection  )  es  null  */
             Cursor c = db.query("JUGADOR", campos, "TIPO LIKE 'S'", null, null, null, null, null);
             if (c.moveToFirst()) {
                 do {
-                    jug = new Jugador(c.getInt(0), c.getString(1),c.getString(2));
+                    jug = new Jugador(c.getInt(0), c.getString(1),c.getString(2),c.getString(3));
                     lista_jug.add(jug);
                 } while (c.moveToNext());
             }
@@ -285,7 +298,7 @@ public class  BdJugador extends SQLiteOpenHelper {
             valores.put("pie", j.getPie());
             valores.put("lesiones", j.getLesion());
             valores.put("equipospro", j.getEquipoPro());
-            //valores.put("foto",j.getF());
+            valores.put("foto",j.getImagen64());
             valores.put("tipo", j.getTipo());
             valores.put("idequip", j.getIdEquip());
             nreg_afectados=db.update("JUGADOR",valores, "id="+j.getId(),null);
@@ -340,7 +353,9 @@ public class  BdJugador extends SQLiteOpenHelper {
         SQLiteDatabase db = getReadableDatabase();
         /*  Creamos  una  Lista  de  Contactos  que  será  la  que  devolvamos  en  este   metodo  */
         if (db != null) {
-            String[] campos = {"ID","NOMBRE","APELLIDOS","NOMBREDEPORT","edad","altura","peso","demarcacionpri","demarcacionsec","pie","lesiones","equipospro","tipo",
+            String[] campos = {"ID","NOMBRE","APELLIDOS","NOMBREDEPORT","edad","altura",
+                    "peso","demarcacionpri","demarcacionsec","pie","lesiones","equipospro",
+                    "FOTO","tipo",
                     "idequip"};
             /*  Como  queremos  devolver  todos  los  registros  el  tercer   parámetro  del  query  (  String  selection  )  es  null  */
             Cursor c = db.query("JUGADOR", campos,"ID="+id, null, null, null, null, null);
@@ -350,7 +365,7 @@ public class  BdJugador extends SQLiteOpenHelper {
                             c.getString(3),c.getInt(4), c.getDouble(5),
                             c.getDouble(6),c.getString(7),c.getString(8),
                             c.getString(9),c.getInt(10),c.getString(11),
-                            c.getString(12),c.getInt(13));
+                            c.getString(12),c.getString(13),c.getInt(14));
                 } while (c.moveToNext());
             }
             c.close();
@@ -360,20 +375,38 @@ public class  BdJugador extends SQLiteOpenHelper {
     }
 
     /**
-     * Metodo para saber si el equipo Scouting ha sido creado ya,para evitar crearlo mas de una vez
-     * @return devuelte true si existe,false si no existe
+     * metodo que recibe un ArrayList de Strings para obtener el  nombre para mostrarlo luego en los spinners
+     * @return
      */
-    public boolean existeScouting(){
+    public List<String> obtenerNombrejugador() {
         /*  Abrimos  la  BD  de  Lectura  */
         SQLiteDatabase db = getReadableDatabase();
+
         /*  Creamos  una  Lista  de  Contactos  que  será  la  que  devolvamos  en  este   metodo  */
+        List<Jugador> lista_jug = new ArrayList<Jugador>();
+
+        /* creamos una lista de strings que será la que pasemos luego al spinne para mostrar los nombres */
+        List<String> listaNombreJugadores = new ArrayList<String>();
         if (db != null) {
-            String[] campos = {"nombre"};
-            Cursor c = db.query("EQUIPO", campos, "NOMBRE LIKE '%SCOUTING%'", null, null, null, null, null);
-            if (!c.moveToFirst())
-                return false;
+            String[] campos = {"NOMBREDEPORT"};
+            /*  Como  queremos  devolver  todos  los  registros  el  tercer   parámetro  del  query  (  String  selection  )  es  null  */
+            Cursor c = db.query("JUGADOR", campos, null, null, null, null, null, null);
+            if (c.moveToFirst()) {
+                do {
+                    jug = new Jugador(c.getString(0));
+                    // añadimos cada nuevo jugador creado a la lista
+                    lista_jug.add(jug);
+                    // añadimos de cada jugador el nombre deportivo a la lista de  jugadores
+                    listaNombreJugadores.add(jug.getNombreDeport());
+                } while (c.moveToNext());
+            }
+            c.close();
         }
-        return true;
+        db.close();
+        // devolvemos en este caso lo que nos interesa mostrar, que es la lista de Strings con los nombres
+        return listaNombreJugadores;
     }
+
+
 }
 

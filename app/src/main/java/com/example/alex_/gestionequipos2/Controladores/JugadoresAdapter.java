@@ -2,8 +2,12 @@ package com.example.alex_.gestionequipos2.Controladores;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.renderscript.RenderScript;
 import android.support.annotation.NonNull;
+import android.support.v4.widget.CircularProgressDrawable;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,11 +46,19 @@ public class JugadoresAdapter extends RecyclerView.Adapter<JugadoresAdapter.View
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
+        CircularProgressDrawable circularProgressDrawable = new CircularProgressDrawable(mContext);
+        circularProgressDrawable.setStrokeWidth(5f);
+        circularProgressDrawable.setCenterRadius(30f);
+        circularProgressDrawable.start();
 
         viewHolder.tvNomD.setText(jug.get(i).getNombreDeport());
         viewHolder.tvNomJ.setText(jug.get(i).getNombre());
         viewHolder.tvDemar.setText(jug.get(i).getDemarcPri());
-        viewHolder.imgFoto.setImageBitmap(jug.get(i).getF());
+        if(jug.get(i).getF()==null){
+            viewHolder.imgFoto.setImageResource(R.drawable.ramos_50px);
+        }else {
+            viewHolder.imgFoto.setImageBitmap(jug.get(i).getF());
+        }
     }
 
     @Override

@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/campoverde4"
+    tools:context=".Vistas.convocatoria">
+
+   <TableLayout
+       android:id="@+id/tablaConvocatoria"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent">
+
+       <TableRow>
+           <LinearLayout
+               android:orientation="vertical"
+               android:layout_width="match_parent"
+               android:layout_weight="1"
+               android:gravity="center">
+
+               <ImageView
+                   android:id="@+id/ivPorteroConvo"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_marginTop="@dimen/standard_21"
+                   android:src="@mipmap/jugador_azul_50px"/>
+
+               <Spinner
+                   android:id="@+id/spinPorteroConvo"
+                   android:layout_width="wrap_content"
+                   android:layout_height="match_parent"
+                   android:textAlignment="center"
+                   android:layout_marginLeft="@dimen/standard_10"
+                   android:spinnerMode="dropdown"
+                   android:popupBackground="@color/gris"
+                   android:background="@null">
+           </Spinner>
+           </LinearLayout>
+       </TableRow>
+
+       <TableRow
+           android:layout_marginTop="@dimen/standard_55">
+
+
+           <LinearLayout
+               android:orientation="vertical"
+               android:layout_weight="1"
+               android:gravity="center"
+               android:layout_marginLeft="@dimen/standard_55">
+
+               <ImageView
+                   android:id="@+id/ivCentralDereConvo"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:src="@mipmap/jugador_azul_50px"/>
+
+               <Spinner
+                   android:id="@+id/spinCentralDereConvo"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_marginLeft="@dimen/standard_10"
+                   android:background="@null"
+                   android:popupBackground="@color/gris"
+                   android:spinnerMode="dropdown">
+               </Spinner>
+           </LinearLayout>
+
+           <LinearLayout
+               android:orientation="vertical"
+               android:layout_weight="1"
+               android:gravity="center"
+               android:layout_marginRight="@dimen/standard_55">
+
+               <ImageView
+                   android:id="@+id/ivCentralIzquiConvo"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:src="@mipmap/jugador_azul_50px"/>
+
+               <Spinner
+                   android:id="@+id/spinCentralIzquiConvo"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_marginLeft="@dimen/standard_10"
+                   android:popupBackground="@color/gris"
+                   android:background="@null"
+                   android:spinnerMode="dropdown">
+               </Spinner>
+           </LinearLayout>
+       </TableRow>
+
+       <TableRow>
+           <LinearLayout
+               android:orientation="vertical"
+               android:gravity="left"
+               android:layout_weight="1">
+
+               <ImageView
+                   android:id="@+id/ivLateralDereConvo"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:src="@mipmap/jugador_azul_50px"
+                   android:layout_marginLeft="@dimen/standard_15"/>
+
+               <Spinner
+                   android:id="@+id/spinLateralDereConvo"
+                   android:layout_width="wrap_content"
+                   android:layout_height="match_parent"
+                   android:textAlignment="center"
+                   android:layout_marginLeft="@dimen/standard_21"
+                   android:background="@null"
+                   android:popupBackground="@color/gris"
+                   android:spinnerMode="dropdown">
+               </Spinner>
+           </LinearLayout>
+
+           <LinearLayout
+               android:orientation="vertical"
+               android:layout_weight="1"
+               android:gravity="right">
+
+               <ImageView
+                   android:id="@+id/ivLateralIzquiConvo"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:paddingRight="@dimen/standard_10"
+                   android:src="@mipmap/jugador_azul_50px"
+                   android:layout_marginRight="@dimen/standard_10"/>
+
+               <Spinner
+                   android:id="@+id/spinLateralIzquiConvo"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_gravity="right"
+                   android:popupBackground="@color/gris"
+                   android:background="@null"
+                   android:spinnerMode="dropdown">
+               </Spinner>
+           </LinearLayout>
+       </TableRow>
+
+       <TableRow>
+           <LinearLayout
+               android:orientation="vertical"
+               android:layout_width="match_parent"
+               android:layout_weight="1"
+               android:gravity="center">
+
+               <ImageView
+                   android:id="@+id/ivMedioCentroConvo"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:paddingTop="@dimen/standard_10"
+                   android:src="@mipmap/jugador_azul_50px"/>
+
+               <Spinner
+                   android:id="@+id/spinMedioCentroConvo"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:paddingTop="@dimen/standard_10"
+                   android:layout_marginLeft="@dimen/standard_10"
+                   android:background="@null"
+                   android:popupBackground="@color/gris"
+                   android:spinnerMode="dropdown">
+               </Spinner>
+           </LinearLayout>
+       </TableRow>
+
+       <TableRow>
+
+           <LinearLayout
+               android:orientation="vertical"
+               android:layout_height="wrap_content"
+               android:gravity="bottom"
+               android:layout_weight="1">
+
+               <ImageView
+                   android:id="@+id/ivInteriorDereConvo"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_marginLeft="@dimen/standard_55"
+                   android:src="@mipmap/jugador_azul_50px"/>
+
+               <Spinner
+                   android:id="@+id/spinInteriorDereConvo"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_marginLeft="@dimen/standard_60"
+                   android:popupBackground="@color/gris"
+                   android:spinnerMode="dropdown"
+                   android:background="@null">
+               </Spinner>
+           </LinearLayout>
+
+           <LinearLayout
+               android:orientation="vertical"
+               android:layout_height="match_parent"
+               android:gravity="bottom|right"
+               android:layout_weight="1">
+
+               <ImageView
+                   android:id="@+id/ivInteriorIzquiConvo"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_marginRight="@dimen/standard_55"
+                   android:src="@mipmap/jugador_azul_50px"/>
+
+               <Spinner
+                   android:id="@+id/spinInteriorIzquiConvo"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_gravity="center"
+                   android:layout_marginLeft="@dimen/standard_35"
+                   android:popupBackground="@color/gris"
+                   android:spinnerMode="dropdown"
+                   android:background="@null">
+               </Spinner>
+           </LinearLayout>
+
+       </TableRow>
+
+       <TableRow
+           android:layout_marginTop="@dimen/standard_30">
+
+           <LinearLayout
+               android:orientation="vertical"
+               android:layout_height="wrap_content"
+               android:layout_weight="1">
+
+               <ImageView
+                   android:id="@+id/ivDelanteroIzquiConvo"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:src="@mipmap/jugador_azul_50px"
+                   android:layout_marginLeft="@dimen/standard_21"/>
+
+               <Spinner
+                   android:id="@+id/spinDelanteroIzquiConvo"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:popupBackground="@color/gris"
+                   android:layout_marginLeft="@dimen/standard_25"
+                   android:background="@null"
+                   android:spinnerMode="dropdown">
+               </Spinner>
+           </LinearLayout>
+
+           <LinearLayout
+               android:orientation="vertical"
+               android:layout_height="wrap_content"
+               android:layout_weight="1"
+               android:gravity="right">
+
+               <ImageView
+                   android:id="@+id/ivDelanteroDereconvo"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:src="@mipmap/jugador_azul_50px"
+                   android:layout_marginRight="@dimen/standard_21"/>
+
+               <Spinner
+                   android:id="@+id/spinDelanteroDereConvo"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:popupBackground="@color/gris"
+                   android:background="@null"
+                   android:spinnerMode="dropdown">
+               </Spinner>
+           </LinearLayout>
+       </TableRow>
+
+       <TableRow>
+           <LinearLayout
+               android:orientation="vertical"
+               android:layout_width="match_parent"
+               android:layout_weight="1"
+               android:gravity="center">
+
+               <ImageView
+                   android:id="@+id/ivDelanteroCentroConvo"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:paddingTop="@dimen/standard_10"
+                   android:src="@mipmap/jugador_azul_50px"/>
+
+               <Spinner
+                   android:id="@+id/spinDelanteroCentroConvo"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:paddingTop="@dimen/standard_10"
+                   android:layout_marginLeft="@dimen/standard_10"
+                   android:popupBackground="@color/gris"
+                   android:background="@null"
+                   android:spinnerMode="dropdown">
+               </Spinner>
+           </LinearLayout>
+       </TableRow>
+
+   </TableLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/floaBtGuardarConvo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:backgroundTint="@color/naranja"
+        android:src="@mipmap/soccer_player_48px"
+        android:layout_marginRight="@dimen/standard_21"
+        android:layout_marginBottom="@dimen/standard_35"
+        android:layout_alignParentBottom="true"
+        app:fabCustomSize="@dimen/standard_45"/>
+
+</RelativeLayout>

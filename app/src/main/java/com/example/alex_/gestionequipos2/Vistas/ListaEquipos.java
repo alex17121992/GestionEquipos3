@@ -28,24 +28,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link ListaEquipos.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link ListaEquipos#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class ListaEquipos extends Fragment implements RecyclerItemTouchHelper2.RecyclerItemTouchHelperListener {
 
-    private String mParam1;
-    private String mParam2;
     private RecyclerView rv;
     private BdJugador bd;
     private Cursor c;
     private List<Equipo> equip;
     private SwipeRefreshLayout swipeRefreshLayout;
-    private OnFragmentInteractionListener mListener;
     private EquiposAdapter sa;
 
     public ListaEquipos() {
@@ -69,25 +58,7 @@ public class ListaEquipos extends Fragment implements RecyclerItemTouchHelper2.R
         bd = new BdJugador(getContext(), "BDEquipos", null, 6);
         equip = bd.listadoEquipo();
         swipeRefreshLayout = (SwipeRefreshLayout) v.findViewById(R.id.swipeRefreshLayout2);
-        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                equip = bd.listadoEquipo();
-                sa = new EquiposAdapter(getContext(), equip, new RecyclerViewOnItemClickListener() {
-                    @Override
-                    public void onClick(View v, int position) {
-                        Intent i = new Intent(getContext(), JugadorInterfaz.class);
-                        int id = equip.get(position).getId();
-                        i.putExtra("Id", String.valueOf(id));
-                        startActivity(i);
-                    }
-                });
-                swipeRefreshLayout.setRefreshing(false);
-                rv.setItemAnimator(new DefaultItemAnimator());
-                rv.setLayoutManager(new LinearLayoutManager(getActivity()));
-                rv.setAdapter(sa);
-            }
-        });
+        refrescarLista();
         swipeRefreshLayout.setRefreshing(false);
         sa = new EquiposAdapter(getContext(), equip, new RecyclerViewOnItemClickListener() {
             @Override
@@ -110,6 +81,43 @@ public class ListaEquipos extends Fragment implements RecyclerItemTouchHelper2.R
         return v;
     }
 
+    /**
+     * Metodo para refrescar el RecyclerView haciendo swipe vertical,implementarmos el listener onRefreschListener
+     * y sobreescribimos el metodo onRefresh,recogemos el arraylist de equipos desde la BD,implementamos el listener del RecyclerView
+     * y dentro creamos un intent para llamar a la interfaz del jugador para editarlo.Le pasamos un Bundle con la id del equipo y lanzamos el activity.
+     * Si no hacemos click en un elemento del Recycler usa el metodo setRefresing para refrescar el Recycler y pasamos al adapdatador al Recycler.
+     */
+    private void refrescarLista() {
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                equip = bd.listadoEquipo();
+                sa = new EquiposAdapter(getContext(), equip, new RecyclerViewOnItemClickListener() {
+                    @Override
+                    public void onClick(View v, int position) {
+                        Intent i = new Intent(getContext(), JugadorInterfaz.class);
+                        int id = equip.get(position).getId();
+                        i.putExtra("Id", String.valueOf(id));
+                        startActivity(i);
+                    }
+                });
+                swipeRefreshLayout.setRefreshing(false);
+                rv.setItemAnimator(new DefaultItemAnimator());
+                rv.setLayoutManager(new LinearLayoutManager(getActivity()));
+                rv.setAdapter(sa);
+            }
+        });
+    }
+
+    /**
+     * El metodo onSwiped permite eliminar un elemento del RecyclerView haciendo swipe hacia la izquierda.Guardamos una copia del equipo eliminado
+     * guardamos una copia del index y comprobamos el campo numJug que contiene el numero de jugadores del equipo y siempre que sea cero podra ser eliminado.
+     * Guardamos la id del equipo que es el numero en la lista y lo eliminamos del Recycler.Llamamos al metodo de borrar de la base de datos y ya quedaria
+     * eliminado.
+     * @param viewHolder
+     * @param direction
+     * @param position
+     */
     @Override
     public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction, int position) {
         final Equipo deletedItem = equip.get(viewHolder.getAdapterPosition());
@@ -131,19 +139,4 @@ public class ListaEquipos extends Fragment implements RecyclerItemTouchHelper2.R
         }
     }
 
-
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
-    }
 }

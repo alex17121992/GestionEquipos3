@@ -21,7 +21,7 @@ import com.example.alex_.gestionequipos2.R;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
-public class editarJugador extends AppCompatActivity implements ListaJugadores.OnFragmentInteractionListener,listaJugador.OnFragmentInteractionListener,listaScouting.OnFragmentInteractionListener
+public class editarJugador extends AppCompatActivity implements ListaJugadores.OnFragmentInteractionListener,listaScouting.OnFragmentInteractionListener
 {
 
     private EditText etNDeportivoS;
@@ -75,7 +75,7 @@ public class editarJugador extends AppCompatActivity implements ListaJugadores.O
             public void onClick(View v) {
                 Jugador j = new Jugador(jug.getId(),etNombreS.getText().toString(),etApellidosS.getText().toString(),etNDeportivoS.getText().toString()
                         ,Integer.parseInt(etEdadS.getText().toString()),Double.parseDouble(etAlturaS.getText().toString()),Double.parseDouble(etPesoS.getText().toString()),etDemarcacionS.getText().toString(),
-                        etDemarcacionS.getText().toString(),etPDominanteS.getText().toString(),0,"Motril","J",jug.getIdEquip());
+                        etDemarcacionS.getText().toString(),etPDominanteS.getText().toString(),0,jug.getEquipoPro(),imagen64,jug.getTipo(),jug.getIdEquip());
                 long num_reg=bd.editarJugador(j);
                 Toast.makeText(getApplicationContext(),"Se han editado " + num_reg + " jugador/es",Toast.LENGTH_LONG).show();
             }
@@ -117,15 +117,19 @@ public class editarJugador extends AppCompatActivity implements ListaJugadores.O
     public void cargarDatos(){
         int ide=Integer.parseInt(id);
         jug=bd.listadoJugadorEd(ide);
-        // ivFotoScoutingS.setImageBitmap(decodedByte);
-            etNombreS.setText(jug.getNombre());
-            etApellidosS.setText(jug.getApellidos());
-            etNDeportivoS.setText(jug.getNombreDeport());
-            etEdadS.setText(String.valueOf(jug.getEdad()));
-            etAlturaS.setText(String.valueOf(jug.getAltura()));
-            etPesoS.setText(String.valueOf(jug.getPeso()));
-            etDemarcacionS.setText(jug.getDemarcSec());
-            etPDominanteS.setText(jug.getPie());
+        etNombreS.setText(jug.getNombre());
+        etApellidosS.setText(jug.getApellidos());
+        etNDeportivoS.setText(jug.getNombreDeport());
+        etEdadS.setText(String.valueOf(jug.getEdad()));
+        etAlturaS.setText(String.valueOf(jug.getAltura()));
+        etPesoS.setText(String.valueOf(jug.getPeso()));
+        etDemarcacionS.setText(jug.getDemarcSec());
+        etPDominanteS.setText(jug.getPie());
+        if(jug.getF()==null){
+            ivFotoScoutingS.setImageResource(R.drawable.ramos_50px);
+        }else {
+            ivFotoScoutingS.setImageBitmap(jug.getF());
+        }
     }
 
     @Override

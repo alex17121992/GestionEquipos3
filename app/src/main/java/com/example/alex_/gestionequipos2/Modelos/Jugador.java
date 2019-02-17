@@ -1,8 +1,21 @@
 package com.example.alex_.gestionequipos2.Modelos;
 
+import android.content.ContentResolver;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
+import android.os.Environment;
+import android.provider.MediaStore;
+import android.support.v4.content.FileProvider;
 import android.util.Base64;
+import android.util.Log;
+
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
+import java.net.URL;
+import java.nio.charset.StandardCharsets;
 
 public class Jugador {
 
@@ -43,18 +56,26 @@ public class Jugador {
         this.imagen64 = imagen64;
     }
 
-    public Jugador(int id, String nombreDeport, String nombre,byte[] imagenBlob){
+    public Jugador(int id, String nombreDeport, String nombre,String imagen64){
         this.id=id;
         this.nombreDeport=nombreDeport;
         this.nombre=nombre;
-        this.imagenBlob=imagenBlob;
-        convertirImagen();
+        this.imagen64=imagen64;
+    }
+
+    public Jugador(String nombreDeport) {
+        this.nombreDeport = nombreDeport;
     }
 
     private void convertirImagen() {
-        byte[] decodedString = Base64.decode(imagenBlob, Base64.DEFAULT);
-        Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
-        foto = Bitmap.createScaledBitmap(decodedByte,250,250,false);
+        if(!imagen64.equals("")) {
+            foto = BitmapFactory.decodeFile(imagen64);
+            if(foto==null){
+                byte[] decodedString = Base64.decode(imagen64, Base64.DEFAULT);
+                Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+                foto = Bitmap.createScaledBitmap(decodedByte, 100, 100, false);
+            }
+        }
     }
 
     public Jugador(String nombre, String apellidos, String nombreDeport, int edad, double altura, double peso, String demarcPri, String demarcSec, String pie, int lesion, String equipoPro, Bitmap f, String tipo, int idEquip) {
@@ -74,13 +95,30 @@ public class Jugador {
         this.idEquip = idEquip;
     }
 
+    public Jugador(int id,String nombre, String apellidos, String nombreDeport, int edad, double altura, double peso, String demarcPri, String demarcSec, String pie, int lesion, String equipoPro, String f, String tipo, int idEquip) {
+        this.id=id;
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.nombreDeport = nombreDeport;
+        this.edad = edad;
+        this.altura = altura;
+        this.peso = peso;
+        this.demarcPri = demarcPri;
+        this.demarcSec = demarcSec;
+        this.pie = pie;
+        this.lesion = lesion;
+        this.equipoPro = equipoPro;
+        this.imagen64= f;
+        this.tipo = tipo;
+        this.idEquip = idEquip;
+    }
+
     public Jugador(String nombre, String apellidos, String nombreDeport, int edad, double altura, double peso, String demarcPri, String demarcSec, String pie, int lesion, String equipoPro, String tipo, int idEquip) {
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.nombreDeport = nombreDeport;
         this.edad = edad;
         this.altura = altura;
-
         this.peso = peso;
         this.demarcPri = demarcPri;
         this.demarcSec = demarcSec;
@@ -115,6 +153,7 @@ public class Jugador {
     }
 
     public Bitmap getF() {
+        convertirImagen();
         return foto;
     }
 
